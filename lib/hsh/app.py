@@ -26,7 +26,8 @@
 def main():
     import sys
     from Naked.commandline import Command
-    from Naked.library.file import FileReader
+    from Naked.toolshed.file import FileReader
+    from Naked.toolshed.system import file_exists, dir_exists, stdout, stderr
 
     #------------------------------------------------------------------------------------------
     # [ Instantiate command line object ]
@@ -79,10 +80,16 @@ def main():
     #         print("Naked & " + lang)            # prints 'Naked & python'
     # End example --------------------------------------->>>
 
-    primary_command = c.cmd.lower()
+    primary_command = c.cmd.lower() #convert to lowercase to support user entry of upper case (e.g. SHA256) as primary command
 
     if primary_command == "sha1":
-        pass
+        if c.argc > 1:
+            if c.argc == 1:
+                pass #single file
+            else:
+                pass #multiple files
+        else:
+            stdout("nope")
     elif primary_command == "sha224":
         print("sha224")
     elif primary_command == "sha256":
@@ -95,6 +102,10 @@ def main():
         print("md5")
     elif primary_command == "check":
         pass # checksum comparison between files or file and explicit hash digest (determined by length of digest)
+    elif c.argc == 1:
+        pass # single argument, perform default SHA256 hash digest generation
+    elif c.argc == 2: # exactly two arguments, perform default comparison between them
+        pass
 
 
     #------------------------------------------------------------------------------------------
