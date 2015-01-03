@@ -25,7 +25,7 @@
 # Application start
 def main():
     import sys
-    from hsh.library.hash import Hasher
+    from hsh.library.hash import Hasher, HashChecker
     from Naked.commandline import Command
     from Naked.toolshed.file import FileReader
     from Naked.toolshed.system import file_exists, dir_exists, stdout, stderr
@@ -147,7 +147,14 @@ def main():
         else:
             stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "check":
-        pass # checksum comparison between files or file and explicit hash digest (determined by length of digest)
+        if c.argc == 3:
+            hc = HashChecker()
+            hc.compare(c.argv[1:])
+        elif c.argc < 3:
+            stderr("You did not include a file or hash digest for comparison.  Please try again.")
+        elif c.argc > 3:
+            stderr("Too many arguments.  Please include two arguments for comparison.")
+
     elif c.argc == 1:
         file = c.arg0
         if file_exists(file):
@@ -168,6 +175,7 @@ def main():
     else:
         print("Could not complete the command that you entered.  Please try again.")
         sys.exit(1) #exit
+
 
 if __name__ == '__main__':
     main()
