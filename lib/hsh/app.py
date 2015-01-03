@@ -25,6 +25,7 @@
 # Application start
 def main():
     import sys
+    from hsh.library.hash import Hasher
     from Naked.commandline import Command
     from Naked.toolshed.file import FileReader
     from Naked.toolshed.system import file_exists, dir_exists, stdout, stderr
@@ -65,45 +66,97 @@ def main():
     #   Enter your command line parsing logic below
     #------------------------------------------------------------------------------------------
 
-    # [[ Example usage ]] ------------------------------->>>
-    # if c.cmd == 'hello':
-    #     if c.cmd2 = 'world':
-    # 	      if c.option('--print'):
-    # 		      print('Hello World!')
-    # elif c.cmd == 'spam':
-    #     if c.option_with_arg('--with'):
-    # 		  friend_of_spam = c.arg('--with')    # user enters hsh spam --with eggs
-    # 		  print('spam and ' + friend_of_spam) # prints 'spam and eggs'
-    # elif c.cmd == 'naked':
-    #     if c.flag("--language"):
-    #         lang = c.flag_arg("--language")     # user enters hsh naked --language=python
-    #         print("Naked & " + lang)            # prints 'Naked & python'
-    # End example --------------------------------------->>>
-
     primary_command = c.cmd.lower() #convert to lowercase to support user entry of upper case (e.g. SHA256) as primary command
 
     if primary_command == "sha1":
         if c.argc > 1:
-            if c.argc == 1:
-                pass #single file
-            else:
-                pass #multiple files
+            file_list = c.argv[1:]
+            for file in file_list:
+                if file_exists(file):
+                    hasher = Hasher()
+                    sha_hash = hasher.sha1(file)
+                    stdout("SHA1 (" + file + ") :")
+                    stdout(sha_hash)
+                else:
+                    stderr(file + " does not appear to be an existing file path.")
         else:
-            stdout("nope")
+            stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "sha224":
-        print("sha224")
+        if c.argc > 1:
+            file_list = c.argv[1:]
+            for file in file_list:
+                if file_exists(file):
+                    hasher = Hasher()
+                    sha_hash = hasher.sha224(file)
+                    stdout("SHA224 (" + file + ") :")
+                    stdout(sha_hash)
+                else:
+                    stderr(file + " does not appear to be an existing file path.")
+        else:
+            stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "sha256":
-        print("sha256")
+        if c.argc > 1:
+            file_list = c.argv[1:]
+            for file in file_list:
+                if file_exists(file):
+                    hasher = Hasher()
+                    sha_hash = hasher.sha256(file)
+                    stdout("SHA256 (" + file + ") :")
+                    stdout(sha_hash)
+                else:
+                    stderr(file + " does not appear to be an existing file path.")
+        else:
+            stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "sha384":
-        print("sha384")
+        if c.argc > 1:
+            file_list = c.argv[1:]
+            for file in file_list:
+                if file_exists(file):
+                    hasher = Hasher()
+                    sha_hash = hasher.sha384(file)
+                    stdout("SHA384 (" + file + ") :")
+                    stdout(sha_hash)
+                else:
+                    stderr(file + " does not appear to be an existing file path.")
+        else:
+            stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "sha512":
-        print("sha512")
+        if c.argc > 1:
+            file_list = c.argv[1:]
+            for file in file_list:
+                if file_exists(file):
+                    hasher = Hasher()
+                    sha_hash = hasher.sha512(file)
+                    stdout("SHA512 (" + file + ") :")
+                    stdout(sha_hash)
+                else:
+                    stderr(file + " does not appear to be an existing file path.")
+        else:
+            stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "md5":
-        print("md5")
+        if c.argc > 1:
+            file_list = c.argv[1:]
+            for file in file_list:
+                if file_exists(file):
+                    hasher = Hasher()
+                    sha_hash = hasher.md5(file)
+                    stdout("MD5 (" + file + ") :")
+                    stdout(sha_hash)
+                else:
+                    stderr(file + " does not appear to be an existing file path.")
+        else:
+            stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "check":
         pass # checksum comparison between files or file and explicit hash digest (determined by length of digest)
     elif c.argc == 1:
-        pass # single argument, perform default SHA256 hash digest generation
+        file = c.arg0
+        if file_exists(file):
+            hasher = Hasher()
+            sha_hash = hasher.sha256(file)
+            stdout("SHA256 (" + file + ") :")
+            stdout(sha_hash)
+        else:
+            stderr(c.arg0 + " does not appear to be an existing file path. Please try again.")
     elif c.argc == 2: # exactly two arguments, perform default comparison between them
         pass
 
