@@ -7,21 +7,6 @@
 # MIT license
 #------------------------------------------------------------------------------
 
-#------------------------------------------------------------------------------------
-# c.cmd = Primary command (hsh <primary command>)
-# c.cmd2 = Secondary command (hsh <primary command> <secondary command>)
-#
-# c.arg_to_cmd = first positional argument to the primary command
-# c.arg_to_cmd2 = first positional argument to the secondary command
-#
-# c.option(option_string, [bool argument_required]) = test for option with optional positional argument to option test
-# c.option_with_arg(option_string) = test for option and mandatory positional argument to option
-# c.flag(flag_string) = test for presence of a "option=argument" style flag
-#
-# c.arg(arg_string) = returns the next positional argument to the arg_string argument
-# c.flag_arg(flag_string) = returns the flag assignment for a "--option=argument" style flag
-#------------------------------------------------------------------------------------
-
 # Application start
 def main():
     import sys
@@ -147,15 +132,14 @@ def main():
         else:
             stderr("You did not include a file in your command.  Please try again.")
     elif primary_command == "check":
-        if c.argc == 3:
+        if c.argc == 3: # primary command + 2 arguments
             hc = HashChecker()
-            hc.compare(c.argv[1:])
+            hc.compare(c.argv[1:]) # pass the argument list excluding the primary command
         elif c.argc < 3:
             stderr("You did not include a file or hash digest for comparison.  Please try again.")
         elif c.argc > 3:
             stderr("Too many arguments.  Please include two arguments for comparison.")
-
-    elif c.argc == 1:
+    elif c.argc == 1: # single file hash digest request with default SHA256 settings
         file = c.arg0
         if file_exists(file):
             hasher = Hasher()
@@ -164,9 +148,9 @@ def main():
             stdout(sha_hash)
         else:
             stderr(c.arg0 + " does not appear to be an existing file path. Please try again.")
-    elif c.argc == 2: # exactly two arguments, perform default comparison between them
-        pass
-
+    elif c.argc == 2: # exactly two arguments, perform comparison between them by default
+        hc = HashChecker()
+        hc.compare(c.argv) # pass the entire argument list because there is no primary command
 
     #------------------------------------------------------------------------------------------
     # [ DEFAULT MESSAGE FOR MATCH FAILURE ]
