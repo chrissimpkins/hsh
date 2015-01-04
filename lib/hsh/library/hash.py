@@ -179,7 +179,7 @@ class HashChecker(object):
         else:
             return False
 
-    # compare hash digest generated from file CL argument to a test hash digest CL argument
+    # compare hash digest generated from file CL argument to a test hash digest string CL argument
     def file_to_hash(self):
         # create Hasher object to read file and generate appropriate hash digest
         hasher = Hasher()
@@ -211,7 +211,7 @@ class HashChecker(object):
 
         return {'type': 'SHA256', 'filehash1': hash_digest_one, 'filehash2': hash_digest_two, 'is_equal': hash_digest_one == hash_digest_two}
 
-    # create a diff indicator for the non-matched positions on the hash strings
+    # create a diff indicator for the non-matched positions on the hash strings (called from compare() function above)
     def differ(self, file_hash, test_hash):
         diff_list = []
         i = 0
