@@ -109,6 +109,9 @@ class HashChecker(object):
                     stdout("The hash digests are identical.")
                 else:
                     stdout(" ")
+                    stdout(self.hash_one)
+                    stdout(self.hash_two)
+                    stdout(self.differ(self.hash_one, self.hash_two))
                     stdout("The hash digests are NOT identical.")
             elif self.hashes == 1 and self.files == 1:
                 result_dict = self.file_to_hash()
@@ -116,10 +119,12 @@ class HashChecker(object):
                 stdout(result_dict['filehash'])
                 stdout(result_dict['type'] + " (test) :")
                 stdout(self.hash_one)
-                stdout(" ")
                 if result_dict['is_equal'] == True:
+                    stdout(" ")
                     stdout("The hash digests are identical.")
                 else:
+                    stdout(self.differ(result_dict['filehash'], self.hash_one))
+                    stdout(" ")
                     stdout("The hash digests are NOT identical.")
             elif self.hashes == 0 and self.files == 2:
                 result_dict = self.file_to_file()
@@ -127,10 +132,12 @@ class HashChecker(object):
                 stdout(result_dict['filehash1'])
                 stdout(result_dict['type'] + " (" + self.filepath_two + ") :")
                 stdout(result_dict['filehash2'])
-                stdout(" ")
                 if result_dict['is_equal'] == True:
+                    stdout(" ")
                     stdout("The hash digests are identical.")
                 else:
+                    stdout(self.differ(result_dict['filehash1'], result_dict['filehash2']))
+                    stdout(" ")
                     stdout("The hash digests are NOT identical.")
 
     #------------------------------------------------------------------------------
@@ -200,6 +207,22 @@ class HashChecker(object):
         hash_digest_two = hasher.sha256(self.filepath_two)
 
         return {'type': 'SHA256', 'filehash1': hash_digest_one, 'filehash2': hash_digest_two, 'is_equal': hash_digest_one == hash_digest_two}
+
+    # create a diff indicator for the non-matched positions on the hash strings
+    def differ(self, file_hash, test_hash):
+        diff_list = []
+        i = 0
+        if len(file_hash) == len(test_hash):
+            for x in file_hash:
+                if test_hash[i] == x:
+                    diff_list.append('=')
+                else:
+                    diff_list.append('^')
+                i += 1
+            return ''.join(diff_list)
+        else:
+            return " "
+
 
 
 
