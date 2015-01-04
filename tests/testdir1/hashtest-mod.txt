@@ -1,0 +1,9 @@
+Python scripts
+
+awk 'BEGIN {OFS="\t"} {if (/def __/) print NR OFS $0}' commandline.py
+
+awk 'BEGIN {OFS="\t"} {if (($0 ~ /def _/) && ($0 !~ /def __/)) print NR OFS $0}' commandline.py
+
+awk 'BEGIN {OFS="\t"} {if (/def /) print NR OFS $0}' commandline.py
+
+some more text to modify this file
