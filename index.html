@@ -54,7 +54,66 @@
                     <span class="octicon octicon-link"></span>
                 </a>What is hsh?</h2>
 
-            <p>Paragraph block</p>
+            <p>hsh is a command line application that generates file hash digests and performs file integrity checks via file hash digests.  It supports the following algorithms:</p>
+            <p>
+              <ul>
+                <li>MD5</li>
+                <li>SHA1</li>
+                <li>SHA224</li>
+                <li>SHA256</li>
+                <li>SHA384</li>
+                <li>SHA512</li>
+              </ul>
+            </p>
+            <h2>Examples of hsh Features</h2>
+            <h3>File Hash Digests</h3>
+            <h4>Default SHA256 Hash Digests</h4>
+            <p>
+<pre><code>$ hsh somefile.txt
+SHA256 (somefile.txt) :
+5c2b47648ae96e60b5d02c573aefa6b01fb49d1b9e1ebd8a1b1a794cf522e6e3</code></pre>
+            </p>
+            <h4>Other Algorithms Available with Primary Command</h4>
+            <p>Use a supported file hash digest algorithm as an explicit command to request a different hash digest:
+<pre><code>$ hsh sha1 somefile.txt
+SHA1 (somefile.txt) :
+0e1fb609e951c85e01f4048f01f0b51256bb3917
+</code></pre>
+            </p>
+
+
+            <h3>File Integrity Checks</h3>
+            <h4>File to File Comparison</h4>
+<pre><code>$ hsh firstfile.txt secondfile.txt
+
+SHA256 (firstfile.txt) :
+0dbe4bb7df0f6d271e8f1fc30ec586fdfb5218e5a615c9abd3843943b4779e9e
+SHA256 (secondfile.txt) :
+0dbe4bb7df0f6d271e8f1fc30ec586fdfb5218e5a615c9abd3843943b4779e9e
+
+The hash digests are identical.</code></pre>
+            <h4>File to File Hash Digest Comparison</h4>
+            <p>Include any of the supported file hash digest types and hsh automatically generates the appropriate hash digest for the file and compares it to your command line argument:
+<pre><code>$ hsh firstfile.txt 0e1fb609e951c85e01f4048f01f0b51256bb3917
+
+SHA1 (firstfile.txt) :
+0e1fb609e951c85e01f4048f01f0b51256bb3917
+SHA1 (test) :
+0e1fb609e951c85e01f4048f01f0b51256bb3917
+
+The hash digests are identical.</code></pre>
+</p>
+            <h4>Hash Digest to Hash Digest Comparison</h4>
+            <p>
+<pre><code>$ hsh da24f4932321286ac849f9145707f0e8 da24f4932321286ac849f9145707f0e9
+
+da24f4932321286ac849f9145707f0e8
+da24f4932321286ac849f9145707f0e9
+===============================^
+
+The hash digests are NOT identical.</code></pre>
+
+            A diff indicator is displayed below the hash digests when they differ.</p>
 
 
         </section>
