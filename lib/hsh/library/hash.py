@@ -95,11 +95,13 @@ class HashChecker(object):
 
         if self.error == True:
             if self.error_number == 1:
-                stderr(self.error_one + " does not appear to be a file path or hash digest.  Please try again.")
+                stderr(" ")
+                stderr(self.error_one + " does not appear to be a file path or supported hash digest.  Please try again.")
                 sys.exit(1)
             else:
-                stderr(self.error_one + " does not appear to be a file path or hash digest.")
-                stderr(self.error_two + " does not appear to be a file path or hash digest.")
+                stderr(" ")
+                stderr(self.error_one + " does not appear to be a file path or supported hash digest.")
+                stderr(self.error_two + " does not appear to be a file path or supported hash digest.")
                 stderr("Please try again.")
                 sys.exit(1)
         else:
@@ -112,6 +114,7 @@ class HashChecker(object):
                     stdout(self.hash_one)
                     stdout(self.hash_two)
                     stdout(self.differ(self.hash_one, self.hash_two))
+                    stdout(" ")
                     stdout("The hash digests are NOT identical.")
             elif self.hashes == 1 and self.files == 1:
                 result_dict = self.file_to_hash()
