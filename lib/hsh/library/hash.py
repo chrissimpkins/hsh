@@ -136,6 +136,8 @@ class HashChecker(object):
     #------------------------------------------------------------------------------
     # PRIVATE METHODS
     #------------------------------------------------------------------------------
+
+    # determine whether the string is an expected hash digest length, assume the algorithm type based upon length
     def is_hash(self, test_hash):
         hash_length = len(test_hash)
 
@@ -160,12 +162,14 @@ class HashChecker(object):
         else:
             return False
 
+    # compare hash digest CL argument to hash digest CL argument (direct string comparison)
     def hash_to_hash(self):
         if self.hash_one == self.hash_two:
             return True
         else:
             return False
 
+    # compare hash digest generated from file CL argument to a test hash digest CL argument
     def file_to_hash(self):
         # create Hasher object to read file and generate appropriate hash digest
         hasher = Hasher()
@@ -189,6 +193,7 @@ class HashChecker(object):
             hash_digest = hasher.sha512(self.filepath_one)
             return {'type': 'SHA512', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
 
+    # compare file CL argument to file CL argument by generating SHA256 hash digest for each file and comparing
     def file_to_file(self):
         hasher = Hasher()
         hash_digest_one = hasher.sha256(self.filepath_one)
