@@ -6,6 +6,9 @@ import hashlib
 from Naked.toolshed.file import FileReader
 from Naked.toolshed.system import file_exists, stdout, stderr
 
+#------------------------------------------------------------------------------
+# Hasher class - generate MD5 and SHA hash digests from files
+#------------------------------------------------------------------------------
 class Hasher(object):
     def __init__(self):
         pass
@@ -45,7 +48,12 @@ class Hasher(object):
         return fr.read_bin()
 
 
-
+#------------------------------------------------------------------------------
+# HashChecker class - compares hash digests by
+#   - digest vs. digest
+#   - digest vs. file
+#   - file vs. file
+#------------------------------------------------------------------------------
 class HashChecker(object):
     def __init__(self):
         self.files = 0
@@ -60,6 +68,9 @@ class HashChecker(object):
         self.hash_two = ""
         self.hash_type = ""
 
+    #------------------------------------------------------------------------------
+    # PUBLIC METHOD
+    #------------------------------------------------------------------------------
     def compare(self, arg_list):
         for argument in arg_list:
             if file_exists(argument):
@@ -122,7 +133,9 @@ class HashChecker(object):
                 else:
                     stdout("The hash digests are NOT identical.")
 
-
+    #------------------------------------------------------------------------------
+    # PRIVATE METHODS
+    #------------------------------------------------------------------------------
     def is_hash(self, test_hash):
         hash_length = len(test_hash)
 
@@ -154,39 +167,34 @@ class HashChecker(object):
             return False
 
     def file_to_hash(self):
-        data = self._read_file(self.filepath_one)
+        # create Hasher object to read file and generate appropriate hash digest
+        hasher = Hasher()
 
         if self.hash_type == "md5":
-            hash_digest = hashlib.md5(data).hexdigest()
+            hash_digest = hasher.md5(self.filepath_one)
             return {'type': 'MD5', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
         elif self.hash_type == "sha1":
-            hash_digest = hashlib.sha1(data).hexdigest()
+            hash_digest = hasher.sha1(self.filepath_one)
             return {'type': 'SHA1', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
         elif self.hash_type == "sha224":
-            hash_digest = hashlib.sha224(data).hexdigest()
+            hash_digest = hasher.sha224(self.filepath_one)
             return {'type': 'SHA224', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
         elif self.hash_type == "sha256":
-            hash_digest = hashlib.sha256(data).hexdigest()
+            hash_digest = hasher.sha256(self.filepath_one)
             return {'type': 'SHA256', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
         elif self.hash_type == "sha384":
-            hash_digest = hashlib.sha384(data).hexdigest()
+            hash_digest = hasher.sha384(self.filepath_one)
             return {'type': 'SHA384', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
         elif self.hash_type == "sha512":
-            hash_digest = hashlib.sha512(data).hexdigest()
+            hash_digest = hasher.sha512(self.filepath_one)
             return {'type': 'SHA512', 'filehash': hash_digest, 'is_equal': hash_digest == self.hash_one}
 
     def file_to_file(self):
-        data_file_one = self._read_file(self.filepath_one)
-        data_file_two = self._read_file(self.filepath_two)
-
-        hash_digest_one = hashlib.sha256(data_file_one).hexdigest()
-        hash_digest_two = hashlib.sha256(data_file_two).hexdigest()
+        hasher = Hasher()
+        hash_digest_one = hasher.sha256(self.filepath_one)
+        hash_digest_two = hasher.sha256(self.filepath_two)
 
         return {'type': 'SHA256', 'filehash1': hash_digest_one, 'filehash2': hash_digest_two, 'is_equal': hash_digest_one == hash_digest_two}
 
-    #------------------------------------------------------------------------------
-    # PRIVATE METHODS
-    #------------------------------------------------------------------------------
-    def _read_file(self, filepath):
-        fr = FileReader(filepath)
-        return fr.read_bin()
+
+
