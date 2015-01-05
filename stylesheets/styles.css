@@ -59,16 +59,21 @@ blockquote {
 
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#333;
+  color:#FFF;
   font-size:12px;
 }
 
 pre {
   padding:8px 15px;
-  background: #f8f8f8;
+  background: #343d46;
+  color:#FFF !important;
   border-radius:5px;
-  border:1px solid #e5e5e5;
+  border:2px solid #e5e5e5;
   overflow-x: auto;
+}
+
+.coderesult{
+  color:#BCED91 !important;
 }
 
 table {
