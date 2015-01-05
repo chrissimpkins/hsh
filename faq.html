@@ -55,9 +55,9 @@
             <h4>What is a file hash digest?</h4>
             <p>File hash digests are summaries of the binary contents of a file that change with even the most minor of file modifications.  It is this property that allows you to use a hash digest to determine whether your version of a file has been modified from an expected version.  Hash digests are always the same number of bits in length (for a given hash algorithm) irrespective of the size and contents of the file.</p>
             <h4>How can I interpret identical file hash digests for two files that are being compared?</h4>
-            <p>It is highly probable that the binary contents of the two files that the hash digests were created from are the same.</p>
+            <p>It is highly probable that the binary contents of the two files that the hash digests were created from are the same.  In plain English, it is very likely that the files are identical.</p>
             <h4>How can I interpret non-identical file hash digests for two files that are being compared?</h4>
-            <p>It is highly probable that the binary contents of the two files that the hash digests were created from differ.</p>
+            <p>It is highly probable that the binary contents of the two files that the hash digests were created from differ.  In plain English, it is very likely that the test file has been modified from the expected version or is a different file without a similar origin file.</p>
             <h4>Why are there different hash digest algorithms?</h4>
             <p>While improbable, it is possible for two <em>different</em> files to have identical hash digests.  This is known as a hash collision.  Older hash algorithms such as MD5 have a lower level of resistance to hash collisions than newer algorithms that were designed to make this phenomenon increasingly improbable.  For more details and references for further reading, see the <a href="https://www.wikipedia.org/wiki/Cryptographic_hash_function#Cryptographic_hash_algorithms">Wikipedia article on this topic</a>.</p>
             <h4>What is the default hsh hash digest algorithm for file hash digest reporting?</h4>
