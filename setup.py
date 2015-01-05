@@ -29,7 +29,7 @@ def version_read():
 setup(
     name='hsh',
     version=version_read(),
-    description='',
+    description='Simple file hash digests and file integrity checks',
     long_description=(docs_read('README.rst')),
     url='',
     license='MIT license',
@@ -44,7 +44,19 @@ setup(
     packages=find_packages("lib"),
     package_dir={'': 'lib'},
     install_requires=['Naked'],
-    keywords='',
+    keywords='file,hash,hash digest,checksum,file comparison,file integrity,file checksum,file check,SHA,MD5,SHA1,SHA224,SHA256,SHA384,SHA512',
     include_package_data=True,
-    classifiers=[],
+    classifiers=[
+        'Intended Audience :: End Users/Desktop',
+        'Development Status :: 5 - Production/Stable',
+        'Natural Language :: English',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
+        'Operating System :: Microsoft :: Windows'
+    ],
 )
