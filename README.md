@@ -2,6 +2,8 @@
 
 ## Simple file hash digests and file integrity checks
 
+Documentation: [https://github.com/chrissimpkins/hsh](https://github.com/chrissimpkins/hsh)
+
 ## About
 hsh is a cross-platform command line application that generates file hash digests and performs file integrity checks via file hash digest comparisons. It supports the following hash algorithms:
 
@@ -106,11 +108,11 @@ or repeat the installation from source instructions in the 'How to Install `hsh`
 
 ## Issue Reporting
 
-Issue reporting is available on the [GitHub repository](https://chrissimpkins.github.io/hsh/issues.html).
+Issue reporting is available on the GitHub repository.  [Here are the instructions](https://chrissimpkins.github.io/hsh/issues.html).
 
 ## Usage
 
-Command line syntax and available options are available in the [Usage documentation](https://chrissimpkins.github.io/hsh/usage.html) or with the following command:
+Command line syntax and available commands & options are available in the [Usage documentation](https://chrissimpkins.github.io/hsh/usage.html) or with the following command:
 
 ```
 $ hsh --help
