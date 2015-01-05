@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>hsh | Frequently Asked Questions (FAQ)</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>
+                <span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-reorder fa-inverse fa-stack-1x"></i>
+                </span>hsh</h1>
+            <p>Simple file hash digests &amp; file integrity checks</p>
+
+            <p class="view"><a href="install.html">Install Guide</a>
+            </p>
+            <p class="view"><a href="quickstart.html">Quickstart Guide</a>
+            </p>
+            <p class="view"><a href="usage.html">Usage</a>
+            </p>
+            <p class="view"><a href="faq.html">FAQ</a>
+            </p>
+            <p class="view"><a href="issues.html">Issue Reporting</a>
+            </p>
+            <p class="view"><a href="changelog.html">Changelog</a>
+            </p>
+
+            <ul>
+                <li><a href="https://github.com/chrissimpkins/hsh/zipball/master">Download <strong>ZIP File</strong></a>
+                </li>
+                <li><a href="https://github.com/chrissimpkins/hsh/tarball/master">Download <strong>TAR Ball</strong></a>
+                </li>
+                <li><a href="https://github.com/chrissimpkins/hsh">View <strong>Source</strong></a>
+                </li>
+            </ul>
+        </header>
+
+        <section>
+
+            <h2>
+                <a id="faq" class="anchor" href="#faq" aria-hidden="true">
+                    <span class="octicon octicon-link"></span>
+                </a>FAQ</h2>
+            <h4>What is a file hash digest?</h4>
+            <p>File hash digests are summaries of the binary contents of a file that change with even the most minor of file modifications.  It is this property that allows you to use a hash digest to determine whether your version of a file has been modified from an expected version.  Hash digests are always the same number of bits in length (for a given hash algorithm) irrespective of the size of the file.</p>
+            <h4>How can I interpret identical file hash digests for two files that are being compared?</h4>
+            <p>It is highly probable that the binary contents of the two files that the hash digests were created from are the same.</p>
+            <h4>How can I interpret non-identical file hash digests for two files that are being compared?</h4>
+            <p>It is highly probable that the binary contents of the two files that the hash digests were created from differ.</p>
+            <h4>Why are there different hash digest algorithms?</h4>
+            <p>While improbable, it is possible for two <em>different</em> files to have identical hash digests.  This is known as a hash collision.  Newer hash algorithms were designed to make hash collisions increasingly improbable.  Older hash algorithms such as MD5 are not felt to provide strong enough resistance to hash collisions for current use.  For more details and references for further reading, see the <a href="https://www.wikipedia.org/wiki/Cryptographic_hash_function#Cryptographic_hash_algorithms">Wikipedia article on this topic</a>.</p>
+            <h4>What is the default hsh hash digest algorithm for file hash digest reporting?</h4>
+            <p>SHA256</p>
+            <h4>What is the default hsh hash digest algorithm for file to file comparisons?</h4>
+            <p>SHA256</p>
+            <h4>How does hsh compare a file on a path that I include on the command line to an expected file hash digest?</h4>
+            <p>Because file hash digests are the same length for a given hash algorithm, hsh can detect the algorithm that was used to generate the hash digest string that you include on the command line.  The application generates a new hash digest for the file on your path argument using the same algorithm and compares the two digests for equality.</p>
+            <h4>I am having a problem with hsh.  What should I do?</h4>
+            <p><a href="issues.html">Please submit an issue report on the GitHub repository</a>.</p>
+
+        </section>
+        <footer>
+            <p>
+                <small>Developed by <a href="https://github.com/chrissimpkins">Chris Simpkins</a>
+                </small>
+                <br>
+                <small>Hosted by <i class="fa fa-github"></i> GitHub</small>
+            </p>
+        </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+</body>
+
+</html>
