@@ -60,7 +60,7 @@
             <h4>How can I interpret non-identical file hash digests for two files that are being compared?</h4>
             <p>It is highly probable that the binary contents of the two files that the hash digests were created from differ.</p>
             <h4>Why are there different hash digest algorithms?</h4>
-            <p>While improbable, it is possible for two <em>different</em> files to have identical hash digests.  This is known as a hash collision.  Newer hash algorithms were designed to make hash collisions increasingly improbable.  Older hash algorithms such as MD5 are not felt to provide strong enough resistance to hash collisions for current use.  For more details and references for further reading, see the <a href="https://www.wikipedia.org/wiki/Cryptographic_hash_function#Cryptographic_hash_algorithms">Wikipedia article on this topic</a>.</p>
+            <p>While improbable, it is possible for two <em>different</em> files to have identical hash digests.  This is known as a hash collision.  Older hash algorithms such as MD5 have a lower level of resistance to hash collisions than newer algorithms that were designed to make this phenomenon increasingly improbable.  For more details and references for further reading, see the <a href="https://www.wikipedia.org/wiki/Cryptographic_hash_function#Cryptographic_hash_algorithms">Wikipedia article on this topic</a>.</p>
             <h4>What is the default hsh hash digest algorithm for file hash digest reporting?</h4>
             <p>SHA256</p>
             <h4>What is the default hsh hash digest algorithm for file to file comparisons?</h4>
