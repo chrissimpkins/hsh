@@ -2,7 +2,7 @@
 
 ## Simple file hash digests and file integrity checks
 
-Documentation: [https://github.com/chrissimpkins/hsh](https://github.com/chrissimpkins/hsh)
+Documentation: [https://chrissimpkins.github.io/hsh/](https://chrissimpkins.github.io/hsh/)
 
 ## About
 hsh is a cross-platform command line application that generates file hash digests and performs file integrity checks via file hash digest comparisons. It supports the following hash algorithms:
