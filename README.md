@@ -1,4 +1,4 @@
-# hsh
+# hsh [![PyPI version](https://badge.fury.io/py/hsh.png)](https://pypi.python.org/pypi/hsh)
 
 ## Simple file hash digests and file integrity checks
 
