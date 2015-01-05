@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>hsh | Usage Documentation</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>
+                <span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-reorder fa-inverse fa-stack-1x"></i>
+                </span>hsh</h1>
+            <p>Simple file hash digests &amp; file integrity checks</p>
+
+            <p class="view"><a href="install.html">Install Guide</a>
+            </p>
+            <p class="view"><a href="quickstart.html">Quickstart Guide</a>
+            </p>
+            <p class="view"><a href="usage.html">Usage</a>
+            </p>
+            <p class="view"><a href="faq.html">FAQ</a>
+            </p>
+            <p class="view"><a href="issues.html">Issue Reporting</a>
+            </p>
+            <p class="view"><a href="changelog.html">Changelog</a>
+            </p>
+
+            <ul>
+                <li><a href="https://github.com/chrissimpkins/hsh/zipball/master">Download <strong>ZIP File</strong></a>
+                </li>
+                <li><a href="https://github.com/chrissimpkins/hsh/tarball/master">Download <strong>TAR Ball</strong></a>
+                </li>
+                <li><a href="https://github.com/chrissimpkins/hsh">View <strong>Source</strong></a>
+                </li>
+            </ul>
+        </header>
+
+        <section>
+
+            <h2>
+                <a id="usage" class="anchor" href="#usage" aria-hidden="true">
+                    <span class="octicon octicon-link"></span>
+                </a>Usage</h2>
+            <h3>Command Line Syntax</h3>
+
+            <h4>File Hash Digest Generator</h4>
+            <p>
+                <pre><code>$ hsh &lt;command&gt; [file path]</code></pre>
+            </p>
+            <p>The command argument is optional. If you do not include a primary command, hsh reports a SHA256 hash digest for your file.  See the <a href="#commands-section">Commands section</a> below for the available commands.</p>
+
+            <h4>File Hash Digest Comparisons</h4>
+            <p>
+                <pre><code>$ hsh [file path 1] [file path 2]</code></pre>
+            </p>
+            <p>
+                <pre><code>$ hsh [file path] [hash digest string]</code></pre>
+            </p>
+            <p>
+                <pre><code>$ hsh [hash digest string 1] [hash digest string 2]</code></pre>
+            </p>
+
+            <p>Hash digest string arguments can include any supported hash digest type.  hsh detects the hash digest algorithm by the length of the hash digest string argument and generates the correct hash digest for your file path argument to perform an appropriate comparison.  For file path to file path argument comparisons, hsh uses the SHA256 hash digest algorithm.</p>
+
+            <br>
+            <h3 id="commands-section">Commands</h3>
+            <p><TABLE>
+                <TR>
+                    <TD>
+                        md5
+                    </TD>
+                    <TD>report MD5 hash digest</TD>
+                </TR>
+                <TR>
+                    <TD>
+                        sh1
+                    </TD>
+                    <TD>report SHA1 hash digest</TD>
+                </TR>
+                <tr>
+                    <td>
+                        sha224
+                    </td>
+                    <td>report SHA224 hash digest</td>
+                </tr>
+                <tr>
+                    <td>
+                        sha256
+                    </td>
+                    <td>report SHA256 hash digest (default)</td>
+                </tr>
+                <tr>
+                    <td>sha384</td>
+                    <td>report SHA384 hash digest</td>
+                </tr>
+                <tr>
+                    <td>sha512</td>
+                    <td>report SHA512 hash digest</td>
+                </tr>
+            </TABLE></p>
+
+            <h3>Options</h3>
+            <table>
+                <tr>
+                    <td>--help | -h</td>
+                    <td>view help documentation</td>
+                </tr>
+                <tr>
+                    <td>--usage</td>
+                    <td>view usage documentation</td>
+                </tr>
+                <tr>
+                    <td>--version | -v</td>
+                    <td>view installed application version</td>
+                </tr>
+            </table>
+
+        </section>
+        <footer>
+            <p>
+                <small>Developed by <a href="https://github.com/chrissimpkins">Chris Simpkins</a>
+                </small>
+                <br>
+                <small>Hosted by <i class="fa fa-github"></i> GitHub</small>
+            </p>
+        </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+</body>
+
+</html>
