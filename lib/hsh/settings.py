@@ -42,7 +42,7 @@ Simple file hash digests & file integrity checks
 Copyright 2015 Christopher Simpkins
 MIT license
 Source: https://github.com/chrissimpkins/hsh
-Docs: http://chrissimpkins.github.io/hsh/
+Docs: https://chrissimpkins.github.io/hsh/
 -------------------------------------------------
 
 ABOUT
