@@ -102,9 +102,6 @@ $ pip install --upgrade hsh
 
 or repeat the installation from source instructions in the 'How to Install `hsh`' section above.
 
-## Requirements
-
-`hsh` requires a Python install on your system.  It has been tested in cPython v2.7.x & 3.4.x as well as in pypy v2.4.x (Python v2.7.8).
 
 ## Issue Reporting
 
@@ -123,7 +120,7 @@ $ hsh --help
 The [FAQ](https://chrissimpkins.github.io/hsh/faq.html) has additional information about hash digests and the interpretation of their comparisons as well as a link to more information for those interested in further reading.
 
 ---
-[MIT License](https://github.com/chrissimpkins/crypto/blob/master/docs/LICENSE) | Built with the [Naked Framework](https://pypi.python.org/pypi/Naked)
+[MIT License](https://github.com/chrissimpkins/crypto/blob/master/docs/LICENSE) | Built with [commandlines](https://github.com/chrissimpkins/commandlines)
 
 
 
