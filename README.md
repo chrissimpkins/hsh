@@ -1,4 +1,4 @@
-# hsh [![Current Version](https://pypip.in/version/hsh/badge.svg?text=version&style=flat)](https://pypi.python.org/pypi/hsh/) [![License](https://pypip.in/license/hsh/badge.svg?style=flat)](https://github.com/chrissimpkins/hsh/blob/master/docs/LICENSE)
+# hsh
 
 ## Simple file hash digests and file integrity checks
 
