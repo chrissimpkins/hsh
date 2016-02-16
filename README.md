@@ -115,10 +115,6 @@ Command line syntax and available commands & options are available in the [Usage
 $ hsh --help
 ```
 
-## FAQ
-
-The [FAQ](https://chrissimpkins.github.io/hsh/faq.html) has additional information about hash digests and the interpretation of their comparisons as well as a link to more information for those interested in further reading.
-
 ---
 [MIT License](https://github.com/chrissimpkins/crypto/blob/master/docs/LICENSE) | Built with [commandlines](https://github.com/chrissimpkins/commandlines)
 
