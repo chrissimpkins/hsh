@@ -1,14 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import sys
 import hashlib
-from Naked.toolshed.file import FileReader
-from Naked.toolshed.system import file_exists, stdout, stderr
+
+
+def file_exists(filepath):
+    if os.path.exists(filepath) and os.path.isfile(filepath):  # test that exists and is a file
+        return True
+    else:
+        return False
+
+
+def read_bin(filepath):
+    with open(filepath, 'rb') as bin_reader:
+        return bin_reader.read()
 
 # ------------------------------------------------------------------------------
 # Hasher class - generate MD5 and SHA hash digests from files
 # ------------------------------------------------------------------------------
+
+
 class Hasher(object):
     def __init__(self):
         pass
@@ -44,8 +57,7 @@ class Hasher(object):
     # PRIVATE METHODS
     # ------------------------------------------------------------------------------
     def _read_file(self, filepath):
-        fr = FileReader(filepath)
-        return fr.read_bin()
+        return read_bin(filepath)
 
 
 # ------------------------------------------------------------------------------
@@ -95,53 +107,53 @@ class HashChecker(object):
 
         if self.error is True:
             if self.error_number == 1:
-                stderr(" ")
-                stderr(self.error_one + " does not appear to be a file path or supported hash digest.  Please try again.")
+                sys.stderr.write(" ")
+                sys.stderr.write(self.error_one + " does not appear to be a file path or supported hash digest.  Please try again.\n")
                 sys.exit(1)
             else:
-                stderr(" ")
-                stderr(self.error_one + " does not appear to be a file path or supported hash digest.")
-                stderr(self.error_two + " does not appear to be a file path or supported hash digest.")
-                stderr("Please try again.")
+                sys.stderr.write(" ")
+                sys.stderr.write(self.error_one + " does not appear to be a file path or supported hash digest.\n")
+                sys.stderr.write(self.error_two + " does not appear to be a file path or supported hash digest.\n")
+                sys.stderr.write("Please try again.\n")
                 sys.exit(1)
         else:
             if self.hashes == 2 and self.files == 0:
                 if self.hash_to_hash() is True:
-                    stdout(" ")
-                    stdout("The hash digests are identical.")
+                    print(" ")
+                    print("The hash digests are identical.")
                 else:
-                    stdout(" ")
-                    stdout(self.hash_one)
-                    stdout(self.hash_two)
-                    stdout(self.differ(self.hash_one, self.hash_two))
-                    stdout(" ")
-                    stdout("The hash digests are NOT identical.")
+                    print(" ")
+                    print(self.hash_one)
+                    print(self.hash_two)
+                    print(self.differ(self.hash_one, self.hash_two))
+                    print(" ")
+                    print("The hash digests are NOT identical.")
             elif self.hashes == 1 and self.files == 1:
                 result_dict = self.file_to_hash()
-                stdout(result_dict['type'] + " (" + self.filepath_one + ") :")
-                stdout(result_dict['filehash'])
-                stdout(result_dict['type'] + " (test) :")
-                stdout(self.hash_one)
+                print(result_dict['type'] + " (" + self.filepath_one + ") :")
+                print(result_dict['filehash'])
+                print(result_dict['type'] + " (test) :")
+                print(self.hash_one)
                 if result_dict['is_equal'] is True:
-                    stdout(" ")
-                    stdout("The hash digests are identical.")
+                    print(" ")
+                    print("The hash digests are identical.")
                 else:
-                    stdout(self.differ(result_dict['filehash'], self.hash_one))
-                    stdout(" ")
-                    stdout("The hash digests are NOT identical.")
+                    print(self.differ(result_dict['filehash'], self.hash_one))
+                    print(" ")
+                    print("The hash digests are NOT identical.")
             elif self.hashes == 0 and self.files == 2:
                 result_dict = self.file_to_file()
-                stdout(result_dict['type'] + " (" + self.filepath_one + ") :")
-                stdout(result_dict['filehash1'])
-                stdout(result_dict['type'] + " (" + self.filepath_two + ") :")
-                stdout(result_dict['filehash2'])
+                print(result_dict['type'] + " (" + self.filepath_one + ") :")
+                print(result_dict['filehash1'])
+                print(result_dict['type'] + " (" + self.filepath_two + ") :")
+                print(result_dict['filehash2'])
                 if result_dict['is_equal'] is True:
-                    stdout(" ")
-                    stdout("The hash digests are identical.")
+                    print(" ")
+                    print("The hash digests are identical.")
                 else:
-                    stdout(self.differ(result_dict['filehash1'], result_dict['filehash2']))
-                    stdout(" ")
-                    stdout("The hash digests are NOT identical.")
+                    print(self.differ(result_dict['filehash1'], result_dict['filehash2']))
+                    print(" ")
+                    print("The hash digests are NOT identical.")
 
     # ------------------------------------------------------------------------------
     # PRIVATE METHODS
