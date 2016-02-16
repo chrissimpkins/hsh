@@ -7,6 +7,7 @@ import unittest
 import pexpect
 from hsh.library.hash import HashChecker
 
+
 class HashCheckerClassTest(unittest.TestCase):
 
     def setUp(self):
@@ -30,9 +31,9 @@ class HashCheckerClassTest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # Test Appropriate Detection of Hash Digests and Assignment of Test Hash Algo Type
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
 
     def test_is_hash_md5(self):
         hc = HashChecker()
@@ -69,9 +70,9 @@ class HashCheckerClassTest(unittest.TestCase):
         self.assertFalse(hc.is_hash(self.fake_hash))
         self.assertEqual(hc.hash_type, "")
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # Hash to Hash Comparison
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
 
     # test successful comparison
     def test_hash_to_hash_success_expected(self):
@@ -87,9 +88,9 @@ class HashCheckerClassTest(unittest.TestCase):
         hc.hash_two = self.hashtest_sha1_hash
         self.assertFalse(hc.hash_to_hash())
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # File to Hash Comparison
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
 
     # test MD5 success
     def test_hash_to_file_md5_success_expected(self):
@@ -223,9 +224,9 @@ class HashCheckerClassTest(unittest.TestCase):
         self.assertEqual(ret_val['filehash'], self.hashtest_sha512_hash)
         self.assertFalse(ret_val['is_equal'])
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # File to File Comparison
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
 
     def test_file_to_file_success_expected(self):
         hc = HashChecker()

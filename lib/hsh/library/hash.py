@@ -1,21 +1,21 @@
 #!/usr/bin/env python
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 
 import sys
 import hashlib
 from Naked.toolshed.file import FileReader
 from Naked.toolshed.system import file_exists, stdout, stderr
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Hasher class - generate MD5 and SHA hash digests from files
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 class Hasher(object):
     def __init__(self):
         pass
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # PUBLIC METHODS
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     def md5(self, filepath):
         data = self._read_file(filepath)
         return hashlib.md5(data).hexdigest()
@@ -40,20 +40,20 @@ class Hasher(object):
         data = self._read_file(filepath)
         return hashlib.sha512(data).hexdigest()
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # PRIVATE METHODS
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     def _read_file(self, filepath):
         fr = FileReader(filepath)
         return fr.read_bin()
 
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # HashChecker class - compares hash digests by
 #   - digest vs. digest
 #   - digest vs. file
 #   - file vs. file
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 class HashChecker(object):
     def __init__(self):
         self.files = 0
@@ -68,9 +68,9 @@ class HashChecker(object):
         self.hash_two = ""
         self.hash_type = ""
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # PUBLIC METHOD
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     def compare(self, arg_list):
         for argument in arg_list:
             if file_exists(argument):
@@ -93,7 +93,7 @@ class HashChecker(object):
                     self.error_two = argument
                 self.error_number += 1
 
-        if self.error == True:
+        if self.error is True:
             if self.error_number == 1:
                 stderr(" ")
                 stderr(self.error_one + " does not appear to be a file path or supported hash digest.  Please try again.")
@@ -106,7 +106,7 @@ class HashChecker(object):
                 sys.exit(1)
         else:
             if self.hashes == 2 and self.files == 0:
-                if self.hash_to_hash() == True:
+                if self.hash_to_hash() is True:
                     stdout(" ")
                     stdout("The hash digests are identical.")
                 else:
@@ -122,7 +122,7 @@ class HashChecker(object):
                 stdout(result_dict['filehash'])
                 stdout(result_dict['type'] + " (test) :")
                 stdout(self.hash_one)
-                if result_dict['is_equal'] == True:
+                if result_dict['is_equal'] is True:
                     stdout(" ")
                     stdout("The hash digests are identical.")
                 else:
@@ -135,7 +135,7 @@ class HashChecker(object):
                 stdout(result_dict['filehash1'])
                 stdout(result_dict['type'] + " (" + self.filepath_two + ") :")
                 stdout(result_dict['filehash2'])
-                if result_dict['is_equal'] == True:
+                if result_dict['is_equal'] is True:
                     stdout(" ")
                     stdout("The hash digests are identical.")
                 else:
@@ -143,9 +143,9 @@ class HashChecker(object):
                     stdout(" ")
                     stdout("The hash digests are NOT identical.")
 
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
     # PRIVATE METHODS
-    #------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
 
     # determine whether the string is an expected hash digest length, assume the algorithm type based upon length
     def is_hash(self, test_hash):
