@@ -116,7 +116,7 @@ $ hsh --help
 ```
 
 ---
-[MIT License](https://github.com/chrissimpkins/crypto/blob/master/docs/LICENSE) | Built with [commandlines](https://github.com/chrissimpkins/commandlines)
+[MIT License](https://github.com/chrissimpkins/crypto/blob/master/docs/LICENSE) | Built with [Commandlines](https://github.com/chrissimpkins/commandlines)
 
 
 
