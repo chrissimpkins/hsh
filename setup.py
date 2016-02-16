@@ -6,6 +6,7 @@ from setuptools import setup, find_packages
 def docs_read(fname):
     return open(os.path.join(os.path.dirname(__file__), 'docs', fname)).read()
 
+
 def version_read():
     settings_file = open(os.path.join(os.path.dirname(__file__), 'lib', 'hsh', 'settings.py')).read()
     major_regex = """major_version\s*?=\s*?["']{1}(\d+)["']{1}"""
@@ -31,7 +32,7 @@ setup(
     version=version_read(),
     description='Simple file hash digests and file integrity checks',
     long_description=(docs_read('README.rst')),
-    url='',
+    url='https://github.com/chrissimpkins/hsh',
     license='MIT license',
     author='Christopher Simpkins',
     author_email='',
@@ -43,7 +44,7 @@ setup(
     },
     packages=find_packages("lib"),
     package_dir={'': 'lib'},
-    install_requires=['Naked'],
+    install_requires=['commandlines'],
     keywords='file,hash,hash digest,checksum,file comparison,file integrity,file checksum,file check,SHA,MD5,SHA1,SHA224,SHA256,SHA384,SHA512',
     include_package_data=True,
     classifiers=[
