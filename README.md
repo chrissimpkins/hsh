@@ -1,4 +1,6 @@
-# hsh [![Build Status](https://travis-ci.org/chrissimpkins/hsh.svg?branch=master)](https://travis-ci.org/chrissimpkins/hsh)
+# hsh [![Build Status](https://travis-ci.org/chrissimpkins/hsh.svg?branch=master)](https://travis-ci.org/chrissimpkins/hsh) [![Build status](https://ci.appveyor.com/api/projects/status/33v8kstkip1dcc75/branch/master?svg=true)](https://ci.appveyor.com/project/chrissimpkins/hsh/branch/master)
+
+
 
 ## Simple file hash digests and file integrity checks
 
