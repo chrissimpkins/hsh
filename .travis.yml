@@ -1,0 +1,32 @@
+# Config file for automatic testing at travis-ci.org
+
+sudo: false
+language: python
+python: 3.5
+env:
+    - TOX_ENV=py27
+    - TOX_ENV=py33
+    - TOX_ENV=py34
+    - TOX_ENV=py35
+    - TOX_ENV=pypy
+    - TOX_ENV=pypy3
+#    - TOX_ENV=flake8
+
+script: tox -e $TOX_ENV
+
+install:
+    - pip install tox
+
+#after_success:
+    # Report coverage results to codecov.io
+    # and export tox environment variables
+#    - pip install https://github.com/chrissimpkins/commandlines/archive/master.zip
+#    - pip install coverage
+#    - pip install pytest
+#    - pip install codecov
+#    - coverage run --source commandlines -m py.test
+#    - coverage report
+#    - codecov -e TOX_ENV
+
+notifications:
+  email: false
