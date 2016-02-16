@@ -7,22 +7,14 @@
 # MIT license
 # ------------------------------------------------------------------------------
 
-import os
 import sys
 
 from commandlines import Command
 
-from hsh.library.hash import Hasher, HashChecker
+from hsh.library.hash import Hasher, HashChecker, file_exists
 from hsh.settings import help as hsh_help
 from hsh.settings import usage as hsh_usage
 from hsh.settings import app_name, major_version, minor_version, patch_version
-
-
-def file_exists(filepath):
-    if os.path.exists(filepath) and os.path.isfile(filepath):  # test that exists and is a file
-        return True
-    else:
-        return False
 
 
 def main():
