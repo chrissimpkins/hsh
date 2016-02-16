@@ -1,4 +1,4 @@
-# hsh
+# hsh [![Build Status](https://travis-ci.org/chrissimpkins/hsh.svg?branch=master)](https://travis-ci.org/chrissimpkins/hsh)
 
 ## Simple file hash digests and file integrity checks
 
